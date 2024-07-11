@@ -24,7 +24,7 @@ export class UserController {
   constructor(
     private readonly userService: UserService,
     @Inject(CACHE_MANAGER) private cacheManager: Cache,
-  ) {}
+  ) { }
 
   @ApiOperation({
     description: 'This Api is used to create the user',
@@ -47,6 +47,9 @@ export class UserController {
     }
   }
 
+  @ApiOperation({
+    description: 'This Api is used to fetch  the list of user',
+  })
   @Get()
   async findAll(@Query() queryParams: PaginationDto, @Res() res: Response) {
     try {
@@ -75,6 +78,10 @@ export class UserController {
       });
     }
   }
+
+  @ApiOperation({
+    description: 'This Api is used to search the user',
+  })
   @Get('/search')
   async search(@Query() queryParams: SearchDto, @Res() res: Response) {
     try {
@@ -104,6 +111,11 @@ export class UserController {
     }
   }
 
+
+
+  @ApiOperation({
+    description: 'This Api is used to fetch the user detail by id',
+  })
   @Get(':id')
   async findOne(@Param('id') id: string, @Res() res: Response) {
     try {
@@ -122,6 +134,11 @@ export class UserController {
     }
   }
 
+
+
+  @ApiOperation({
+    description: 'This Api is used to update the user',
+  })
   @Patch(':id')
   async update(
     @Param('id') id: string,
@@ -152,6 +169,11 @@ export class UserController {
     }
   }
 
+
+
+  @ApiOperation({
+    description: 'This Api is used to delete the user',
+  })
   @Delete(':id')
   async delete(@Param('id') id: string, @Res() res: Response) {
     try {
